@@ -46,14 +46,9 @@ header {
 
 .grid h1 {
   grid-column: span 3;
-  font-size: 20px;
-  margin-bottom: 10px;
 }
 .grid-container h2 {
   grid-column: span 3;
-  font-size: 25px;
-  text-align: center;
-  padding-left: 5%;
 }
 
 
