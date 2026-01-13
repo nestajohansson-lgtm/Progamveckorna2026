@@ -93,7 +93,7 @@ header {
 .top-header {
   display: flex;
   align-items: center;
-  background-color: #6fa3eb;
+  background-color: #4a90e2;
   height: 70px;
 }
 
@@ -120,3 +120,27 @@ header {
   font-weight: bold;
   font-size: 26px;
 }
+
+#AI-form {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+button {
+  padding: 10px 16px;
+  background: #0284c7;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  position:absolute;
+  right:0;
+  
+}
+
+button:hover {
+  background: #0369a1;
+}
+
