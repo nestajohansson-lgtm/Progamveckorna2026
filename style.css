@@ -129,18 +129,17 @@ header {
 }
 
 button {
-  padding: 10px 16px;
-  background: #0284c7;
+  padding: 10px 16px; 
+  background: #0284c7; 
   border: none;
-  border-radius: 6px;
-  color: white;
+  border-radius: 6px; 
+  color: white; 
   cursor: pointer;
-  position:absolute;
+  position:absolute; 
   right:0;
+  }
+
+  button:hover { 
+    background: #0369a1; 
+  }
   
-}
-
-button:hover {
-  background: #0369a1;
-}
-
