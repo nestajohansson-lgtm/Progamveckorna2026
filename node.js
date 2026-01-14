@@ -1,6 +1,8 @@
 import express from "express";
 import fetch from "node-fetch";
 
+npm install pg: 
+
 const app = express();
 app.use(express.json());
 
@@ -34,5 +36,3 @@ const response = await fetch("/chat", {
 });
 const data = await response.json();
 addMessage(data.reply, "ai");
-
-npm install pg
