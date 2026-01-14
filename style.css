@@ -126,20 +126,32 @@ header {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;           /* use flex to align button and form */
+  align-items: stretch;    /* make children match height */
+  background: #f3f4f6;     /* optional, gives chat box a background */
+  border-radius: 8px;
+  overflow: hidden;        /* keep button inside the border nicely */
 }
 
-button {
-  padding: 10px 16px; 
+#AI-form textarea {
+  flex: 1;                 /* take remaining space */
+  padding: 10px;
+  border: none;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  resize: none;
+}
+
+#AI-form button {
+  padding: 0 16px;         /* only horizontal padding */
   background: #0284c7; 
   border: none;
-  border-radius: 6px; 
   color: white; 
   cursor: pointer;
-  position:absolute; 
-  right:0;
-  }
+  border-radius: 0 8px 8px 0; /* match chat box height */
+  transition: background 0.2s ease;
+}
 
-  button:hover { 
-    background: #0369a1; 
-  }
-  
+#AI-form button:hover { 
+  background: #4a90e2; 
+}

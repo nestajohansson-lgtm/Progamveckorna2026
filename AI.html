@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Geminin</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -29,11 +30,23 @@
 
     <a href="index.html" class="back-button">← Tillbaka</a>
 
-    <form id ="AI-form">
-        <label for="user-input">Ställ en fråga till AI-assistenten:</label><br>
-        <textarea id="user-input" name="user-input" rows="4" cols="50" placeholder="Skriv din fråga här..."></textarea><br>
+    <form id="AI-form">
+        <label for="user-input">Ställ en fråga till <br> AI-assistenten:</label><br>
+        <textarea id="user-input" name="user-input" rows="4" cols="50"
+            placeholder="Skriv din fråga här..."></textarea><br>
         <button type="submit">Skicka</button>
 
-    
+        <script>
+            const API_KEY = 'AIzaSyBp8aCPOrM3jchnnUZtJOdoAChTXKzWhpg';
+            document.getElementById('getData').addEventListener('click', async () => {
+                const API_KEY = 'AIzaSyBp8aCPOrM3jchnnUZtJOdoAChTXKzWhpg';
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?apikey=${AIzaSyBp8aCPOrM3jchnnUZtJOdoAChTXKzWhpg}`);
+                const data = await response.json();
+                console.log(data);
+            });
+        </script>
+
+
 </body>
+
 </html>
