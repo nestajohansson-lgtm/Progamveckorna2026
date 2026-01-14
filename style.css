@@ -198,3 +198,13 @@ header {
     border-radius: 6px;       
     background-color: white;
 }
+
+.calendar-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #007bff; /* blå bakgrund */
+    color: rgb(0, 0, 0);              /* vit text */
+    padding: 6px 0;            /* lite luft runt texten */
+    border-radius: 4px;        /* mjuka hörn inuti rutan */
+}
