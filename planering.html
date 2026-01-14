@@ -11,7 +11,20 @@
         <a href="index.html" class="back-button">Tillbaka</a>
         <h1>Planering</h1>
     </header>
+    
+
+    <div class="todo-section">
+    <h2 class="todo-title">Att Göra</h2>
+    <div class="todo-list">
+        <div class="todo-item">Exempeluppgift 1</div>
+        <div class="todo-item">Exempeluppgift 2</div>
+        <div class="todo-item">Pågående uppgift 1</div>
+        <div class="todo-item">Färdig uppgift 1</div>
+    </div>
+</div>
+    
     <div id="calendar"></div>
+
     <script>
     const calendar = document.getElementById("calendar");
 
@@ -27,13 +40,11 @@
     let html = `<div class="calendar-header">${monthName}</div>`;
     html += `<div class="calendar-grid">`;
 
-    // Tomma rutor innan första dagen
     const startDay = (firstDay === 0) ? 6 : firstDay - 1;
     for (let i = 0; i < startDay; i++) {
         html += `<div></div>`;
     }
 
-    // Alla dagar i månaden
     for (let day = 1; day <= daysInMonth; day++) {
         const isToday = day === today.getDate();
         html += `<div class="day ${isToday ? 'today' : ''}">${day}</div>`;
