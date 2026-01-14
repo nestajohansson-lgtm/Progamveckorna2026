@@ -26,3 +26,11 @@ app.post("/chat", async (req, res) => {
 });
 
 app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+
+const response = await fetch("/chat", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ message: text })
+});
+const data = await response.json();
+addMessage(data.reply, "ai");
