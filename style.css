@@ -43,6 +43,21 @@ header {
   text-align: center;
 }
 
+h1, h2, h3 {
+  text-align: center;
+}
+.jk {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.j {
+  max-width: 400px;
+}
+
+
 
 .grid h1 {
   grid-column: span 3;
@@ -148,8 +163,14 @@ header {
   border: none;
   color: white; 
   cursor: pointer;
+<<<<<<< HEAD
+  position: center;
+  right:0;
+  
+=======
   border-radius: 0 8px 8px 0; /* match chat box height */
   transition: background 0.2s ease;
+>>>>>>> b7a2aad67b47d5122cf88724b2a44cdd7af04523
 }
 
 #AI-form button:hover { 
