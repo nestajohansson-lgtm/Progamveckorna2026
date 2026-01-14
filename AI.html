@@ -6,19 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geminin</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Minimal chatbox styles */
+        #chat-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+            background: #f9f9f9;
+        }
+
+        #messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+        }
+
+        .user {
+            background: #0b93f6;
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .ai {
+            background: #e0e0e0;
+            color: black;
+            margin-right: auto;
+        }
+
+        #input-area {
+            display: flex;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        #user-input {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        #send-button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body id="AI-body">
     <header class="top-header">
-
         <nav class="header-nav">
             <a href="amnen.html" class="header-item">Ämnen</a>
             <a href="planering.html" class="header-item">Planering</a>
             <a href="AI.html" class="header-item active">AI Assistant</a>
         </nav>
-
     </header>
-
 
     <nav>
         <ul>
@@ -30,23 +87,69 @@
 
     <a href="index.html" class="back-button">← Tillbaka</a>
 
-    <form id="AI-form">
-        <label for="user-input">Ställ en fråga till <br> AI-assistenten:</label><br>
-        <textarea id="user-input" name="user-input" rows="4" cols="50"
-            placeholder="Skriv din fråga här..."></textarea><br>
-        <button type="submit">Skicka</button>
+    <!-- Chatbox container -->
+    <div id="chat-container">
+        <div id="messages"></div>
+        <div id="input-area">
+            <textarea id="user-input" rows="2" placeholder="Skriv din fråga här..."></textarea>
+            <button id="send-button">Skicka</button>
+        </div>
+    </div>
 
-        <script>
-            const API_KEY = 'AIzaSyBp8aCPOrM3jchnnUZtJOdoAChTXKzWhpg';
-            document.getElementById('getData').addEventListener('click', async () => {
-                const API_KEY = 'AIzaSyBp8aCPOrM3jchnnUZtJOdoAChTXKzWhpg';
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?apikey=${AIzaSyBp8aCPOrM3jchnnUZtJOdoAChTXKzWhpg}`);
+    <script>
+        const API_KEY = 'AIzaSyBp8aCPOrM3jchnnUZtJOdoAChTXKzWhpg'; // Insert your key safely
+
+        const messages = document.getElementById("messages");
+        const input = document.getElementById("user-input");
+        const button = document.getElementById("send-button");
+
+        function addMessage(text, sender) {
+            const div = document.createElement("div");
+            div.classList.add("message", sender);
+            div.textContent = text;
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight; // Auto-scroll
+        }
+
+        async function sendMessage() {
+            const text = input.value.trim();
+            if (!text) return;
+            addMessage(text, "user"); // Show user message
+            input.value = "";
+
+            // Call Gemini API
+            try {
+                const response = await fetch(
+                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${AIzaSyBp8aCPOrM3jchnnUZtJOdoAChTXKzWhpg}`,
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            contents: [
+                                { parts: [{ text }] } // Send user input
+                            ]
+                        })
+                    }
+                );
+
                 const data = await response.json();
-                console.log(data);
-            });
-        </script>
+                // Gemini response text (replace this path if different)
+                const aiReply = data.candidates?.[0]?.content?.[0]?.text || "Inget svar från AI";
+                addMessage(aiReply, "ai");
+            } catch (err) {
+                console.error(err);
+                addMessage("Fel vid hämtning av AI-svar.", "ai");
+            }
+        }
 
+        button.addEventListener("click", sendMessage);
+        input.addEventListener("keydown", e => {
+            if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
 
 </body>
-
 </html>
