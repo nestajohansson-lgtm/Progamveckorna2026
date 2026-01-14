@@ -155,3 +155,46 @@ header {
 #AI-form button:hover { 
   background: #4a90e2; 
 }
+
+.back-button {
+    color: black;              /* svart text */
+    text-decoration: none;     /* tar bort understrykning */
+    border: 1px solid black;   /* ruta runt knappen */
+    padding: 4px 8px;          /* lite luft inuti */
+    border-radius: 4px;        /* mjuka hörn (valfritt) */
+}
+
+#calendar {
+    margin-top: 200px;
+    width: 280px;
+}
+
+.calendar-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.day {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+.today {
+    background-color: lightgray;
+    font-weight: bold;
+}
+
+#calendar { 
+    padding: 15px;            
+    border: 2px solid black;   
+    border-radius: 6px;       
+    background-color: white;
+}
