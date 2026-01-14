@@ -7,6 +7,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <header>
+        <a href="index.html" class="back-button">Tillbaka</a>
+        <h1>Planering</h1>
+    </header>
+    <div id="calendar"></div>
+    <script>
+    const calendar = document.getElementById("calendar");
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+
+    const monthName = today.toLocaleDateString("sv-SE", { month: "long", year: "numeric" });
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    let html = `<div class="calendar-header">${monthName}</div>`;
+    html += `<div class="calendar-grid">`;
+
+    // Tomma rutor innan första dagen
+    const startDay = (firstDay === 0) ? 6 : firstDay - 1;
+    for (let i = 0; i < startDay; i++) {
+        html += `<div></div>`;
+    }
+
+    // Alla dagar i månaden
+    for (let day = 1; day <= daysInMonth; day++) {
+        const isToday = day === today.getDate();
+        html += `<div class="day ${isToday ? 'today' : ''}">${day}</div>`;
+    }
+
+    html += `</div>`;
+    calendar.innerHTML = html;
+</script>
 </body>
 </html>
