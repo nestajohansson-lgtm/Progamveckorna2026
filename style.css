@@ -141,21 +141,91 @@ h1, h2, h3 {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;           /* use flex to align button and form */
+  align-items: stretch;    /* make children match height */
+  background: #f3f4f6;     /* optional, gives chat box a background */
+  border-radius: 8px;
+  overflow: hidden;        /* keep button inside the border nicely */
 }
 
-button {
-  padding: 10px 16px;
-  background: #0284c7;
+#AI-form textarea {
+  flex: 1;                 /* take remaining space */
+  padding: 10px;
   border: none;
-  border-radius: 6px;
-  color: white;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  resize: none;
+}
+
+#AI-form button {
+  padding: 0 16px;         /* only horizontal padding */
+  background: #0284c7; 
+  border: none;
+  color: white; 
   cursor: pointer;
+<<<<<<< HEAD
   position: center;
   right:0;
   
+=======
+  border-radius: 0 8px 8px 0; /* match chat box height */
+  transition: background 0.2s ease;
+>>>>>>> b7a2aad67b47d5122cf88724b2a44cdd7af04523
 }
 
-button:hover {
-  background: #0369a1;
+#AI-form button:hover { 
+  background: #4a90e2; 
 }
 
+.back-button {
+    color: black;              /* svart text */
+    text-decoration: none;     /* tar bort understrykning */
+    border: 1px solid black;   /* ruta runt knappen */
+    padding: 4px 8px;          /* lite luft inuti */
+    border-radius: 4px;        /* mjuka hörn (valfritt) */
+}
+
+#calendar {
+    margin-top: 200px;
+    width: 280px;
+}
+
+.calendar-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.day {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+.today {
+    background-color: lightgray;
+    font-weight: bold;
+}
+
+#calendar { 
+    padding: 15px;            
+    border: 2px solid black;   
+    border-radius: 6px;       
+    background-color: white;
+}
+
+.calendar-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #007bff; /* blå bakgrund */
+    color: rgb(0, 0, 0);              /* vit text */
+    padding: 6px 0;            /* lite luft runt texten */
+    border-radius: 4px;        /* mjuka hörn inuti rutan */
+}
