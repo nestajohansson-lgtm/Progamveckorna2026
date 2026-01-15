@@ -197,14 +197,23 @@ h3 {
 }
 
 #calendar {
-  margin-top: 200px;
+  float: left;
+  padding: 15px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: white;
   width: 280px;
+  margin-top: 15px;
 }
 
 .calendar-header {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: #4a90e2; 
+    color: rgb(0, 0, 0);              
+    padding: 6px 0;            
+    border-radius: 4px;      
 }
 
 .calendar-grid {
@@ -224,29 +233,83 @@ h3 {
   font-weight: bold;
 }
 
-#calendar {
-  padding: 15px;
-  border: 2px solid black;
-  border-radius: 6px;
-  background-color: white;
+
+.todo-section {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end;  
+    margin-top: 50px;
+    margin-right: 50px;
 }
 
-.calendar-header {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
-  background-color: #007bff;
-  /* blå bakgrund */
-  color: rgb(0, 0, 0);
-  /* vit text */
-  padding: 6px 0;
-  /* lite luft runt texten */
-  border-radius: 4px;
-  /* mjuka hörn inuti rutan */
+.todo-title {
+    color: #000000;
+    float:bottom: 10px; 
+    float:left: 100px;
 }
 
+.todo-list {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+}
 
-/* Minimal chatbox styles */
+.todo-item {
+    background-color: #e3e3e3;
+    width: 150px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #e44040;
+    color: rgb(0, 0, 0);
+    padding: 6px 0;
+    border-radius: 4px;
+}
+
+.todo-item2 {
+    background-color: #ffffff;
+    width: 150px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #e44040;
+    color: rgb(0, 0, 0);
+    padding: 6px 0;
+    border-radius: 4px;
+}
+
+.todo-item3 {
+    background-color: #ffffff;
+    width: 150px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #e2ff3f;
+    color: rgb(0, 0, 0);
+    padding: 6px 0;
+    border-radius: 4px;
+}
+
+.todo-item4 {
+    background-color: #ffffff;
+    width: 150px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #3cff00;
+    color: rgb(0, 0, 0);
+    padding: 6px 0;
+    border-radius: 4px;
+}
+
 #chat-container {
   width: 100%;
   max-width: 700px;
