@@ -1,57 +1,61 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <a href="index.html" class="back-button">Tillbaka</a>
         <h1>Planering</h1>
     </header>
-    
 
-    <div class="todo-section">
-    <h2 class="todo-title">Att Göra</h2>
-    <div class="todo-list">
-        <div class="todo-item">Exempeluppgift 1</div>
-        <div class="todo-item">Exempeluppgift 2</div>
-        <div class="todo-item">Pågående uppgift 1</div>
-        <div class="todo-item">Färdig uppgift 1</div>
-    </div>
-</div>
-    
     <div id="calendar"></div>
 
     <script>
-    const calendar = document.getElementById("calendar");
+        const calendar = document.getElementById("calendar");
 
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = today.getMonth();
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth();
 
-    const monthName = today.toLocaleDateString("sv-SE", { month: "long", year: "numeric" });
+        const monthName = today.toLocaleDateString("sv-SE", { month: "long", year: "numeric" });
 
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    let html = `<div class="calendar-header">${monthName}</div>`;
-    html += `<div class="calendar-grid">`;
+        let html = `<div class="calendar-header">${monthName}</div>`;
+        html += `<div class="calendar-grid">`;
 
-    const startDay = (firstDay === 0) ? 6 : firstDay - 1;
-    for (let i = 0; i < startDay; i++) {
-        html += `<div></div>`;
-    }
+        const startDay = (firstDay === 0) ? 6 : firstDay - 1;
+        for (let i = 0; i < startDay; i++) {
+            html += `<div></div>`;
+        }
 
-    for (let day = 1; day <= daysInMonth; day++) {
-        const isToday = day === today.getDate();
-        html += `<div class="day ${isToday ? 'today' : ''}">${day}</div>`;
-    }
+        for (let day = 1; day <= daysInMonth; day++) {
+            const isToday = day === today.getDate();
+            html += `<div class="day ${isToday ? 'today' : ''}">${day}</div>`;
+        }
 
-    html += `</div>`;
-    calendar.innerHTML = html;
-</script>
+        html += `</div>`;
+        calendar.innerHTML = html;
+    </script>
+
+    <div class="todo-section">
+        <h2 class="todo-title">Att Göra</h2>
+        <div class="todo-list">
+            <div class="todo-item">Exempeluppgift 1</div>
+            <div class="todo-item">Exempeluppgift 2</div>
+            <div class="todo-item">Pågående uppgift 1</div>
+            <div class="todo-item">Färdig uppgift 1</div>
+        </div>
+    </div>
+
+    
 </body>
+
 </html>
