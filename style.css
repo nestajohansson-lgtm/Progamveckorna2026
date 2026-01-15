@@ -368,9 +368,20 @@ h3 {
   cursor: pointer;
 }
 
+.page-header {
+    background-color: #4a90e2;
+    width: 100%;
+    padding: 15px;
+    height: 70px;
+    text-align: center;
+}
+
 textarea {
-    width: 400px;
-    height: 200px;
+    width: auto;
+    height: 300px;
     padding: 10px;
     font-size: 16px;
+    margin-top: 50px;
 }
+
+
