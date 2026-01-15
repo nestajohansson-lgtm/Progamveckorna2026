@@ -369,7 +369,7 @@ h3 {
 }
 
 
-/* HEADER */
+
 .page-header {
     background-color: #4a90e2;
     width: 100%;
@@ -380,13 +380,13 @@ h3 {
     color: black;
 }
 
-/* HUVUDLAYOUT */
+
 .anteckningar-conainer {
     display: flex;
-    height: calc(100vh - 70px); /* tar bort headerns höjd */
+    height: calc(100vh - 70px); 
 }
 
-/* VÄNSTER: ÄMNEN */
+
 .ämnen {
     width: 220px;
     background-color: #f2f2f2;
@@ -401,7 +401,7 @@ h3 {
     cursor: pointer;
 }
 
-/* HÖGER: ANTECKNINGAR */
+
 .notes-area {
     flex: 1;
     padding: 20px;
@@ -421,7 +421,7 @@ h3 {
     font-size: 16px;
 }
 
-/* TILLBAKA-LÄNK */
+
 .back-button {
     display: block;
     margin: 10px;
