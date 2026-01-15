@@ -245,7 +245,7 @@ h3 {
 .todo-title {
     color: #000000;
     float:bottom: 10px; 
-    float:left: 100px;
+    float:left: 50px;
 }
 
 .todo-list {
@@ -366,4 +366,11 @@ h3 {
   padding: 10px 15px;
   margin-left: 10px;
   cursor: pointer;
+}
+
+textarea {
+    width: 400px;
+    height: 200px;
+    padding: 10px;
+    font-size: 16px;
 }
