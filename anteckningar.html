@@ -7,7 +7,8 @@
 </head>
 <body>
 
-    <div class="page-header">
+
+<div class="page-header">
     <h1>Anteckningar</h1>
 </div>
     <nav>
@@ -17,13 +18,32 @@
         </ul>
     </nav>
 
-    <textarea id="notes" placeholder="Skriv dina anteckningar här..."></textarea>
 
-    <br><br>
-    <a href="index.html" class="back-button">Tillbaka</a>
-
-    <script src="anteckningar.js"></script>
+<div class="anteckningar-conainer">
+    
+    
+    <div class="ämnen">
+        <button data-ämne="svenska">Svenska</button>
+        <button data-ämne="matematik">Matematik</button>
+        <button data-ämne="engelska">Engelska</button>
+        <button data-ämne="fysik">Fysik</button>
+        <button data-ämne="kemi">Kemi</button>
+        <button data-ämne="teknik">Teknik</button>
+        <button data-ämne="programmering">Programmering</button>
+        <button data-ämne="webbutveckling">Webb Utveckling</button>
+        <button data-ämne="webbserver">Webbserver Programmering</button>
+    </div>
 
     
+    <div class="notes-area">
+        <h3 id="current-ämne">Svenska</h3>
+        <textarea id="anteckningar" placeholder="Skriv dina anteckningar här..."></textarea>
+    </div>
+</div>
+
+
+<a href="index.html" class="back-button">Tillbaka</a>
+
+<script src="anteckningar.js"></script>
 </body>
 </html>
