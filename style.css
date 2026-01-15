@@ -368,20 +368,64 @@ h3 {
   cursor: pointer;
 }
 
+
+/* HEADER */
 .page-header {
     background-color: #4a90e2;
     width: 100%;
-    padding: 15px;
     height: 70px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
 }
 
-textarea {
-    width: auto;
-    height: 300px;
+/* HUVUDLAYOUT */
+.anteckningar-conainer {
+    display: flex;
+    height: calc(100vh - 70px); /* tar bort headerns höjd */
+}
+
+/* VÄNSTER: ÄMNEN */
+.ämnen {
+    width: 220px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ämnen button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* HÖGER: ANTECKNINGAR */
+.notes-area {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#current-ämne {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+#anteckningar {
+    flex: 1;
+    width: 100%;
     padding: 10px;
     font-size: 16px;
-    margin-top: 50px;
 }
+
+/* TILLBAKA-LÄNK */
+.back-button {
+    display: block;
+    margin: 10px;
+}
+
 
 
