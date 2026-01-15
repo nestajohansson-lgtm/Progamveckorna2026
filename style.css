@@ -197,19 +197,23 @@ h3 {
 }
 
 #calendar {
-<<<<<<< HEAD
-    margin-top: 10px;
-    width: 280px;
-=======
-  margin-top: 200px;
+  float: left;
+  padding: 15px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: white;
   width: 280px;
->>>>>>> 5be33a8828cc69ffed399885591bc4d362609b34
+  margin-top: 15px;
 }
 
 .calendar-header {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: #4a90e2; 
+    color: rgb(0, 0, 0);              
+    padding: 6px 0;            
+    border-radius: 4px;      
 }
 
 .calendar-grid {
@@ -229,41 +233,25 @@ h3 {
   font-weight: bold;
 }
 
-#calendar {
-  padding: 15px;
-  border: 2px solid black;
-  border-radius: 6px;
-  background-color: white;
-}
-
-.calendar-header {
-<<<<<<< HEAD
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 10px;
-    background-color: #4a90e2; 
-    color: rgb(0, 0, 0);              
-    padding: 6px 0;            
-    border-radius: 4px;      
-}
 
 .todo-section {
     display: flex;
-    flex-direction: column; /* staplar titel + lista vertikalt */
-    align-items: flex-end;  /* flyttar allt till höger */
+    flex-direction: column; 
+    align-items: flex-end;  
     margin-top: 50px;
     margin-right: 50px;
 }
 
 .todo-title {
     color: #000000;
-    margin-bottom: 20px; /* mellanrum mellan titel och lista */
+    float:bottom: 10px; 
+    float:left: 50px;
 }
 
 .todo-list {
     display: flex;
-    flex-direction: column; /* staplar items vertikalt */
-    gap: 10px; /* mellanrum mellan varje todo-item */
+    flex-direction: column; 
+    gap: 10px; 
 }
 
 .todo-item {
@@ -271,23 +259,57 @@ h3 {
     width: 150px;
     padding: 10px;
     border-radius: 4px;
-    text-align: left;
-=======
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
-  background-color: #007bff;
-  /* blå bakgrund */
-  color: rgb(0, 0, 0);
-  /* vit text */
-  padding: 6px 0;
-  /* lite luft runt texten */
-  border-radius: 4px;
-  /* mjuka hörn inuti rutan */
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #e44040;
+    color: rgb(0, 0, 0);
+    padding: 6px 0;
+    border-radius: 4px;
 }
 
+.todo-item2 {
+    background-color: #ffffff;
+    width: 150px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #e44040;
+    color: rgb(0, 0, 0);
+    padding: 6px 0;
+    border-radius: 4px;
+}
 
-/* Minimal chatbox styles */
+.todo-item3 {
+    background-color: #ffffff;
+    width: 150px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #e2ff3f;
+    color: rgb(0, 0, 0);
+    padding: 6px 0;
+    border-radius: 4px;
+}
+
+.todo-item4 {
+    background-color: #ffffff;
+    width: 150px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #3cff00;
+    color: rgb(0, 0, 0);
+    padding: 6px 0;
+    border-radius: 4px;
+}
+
 #chat-container {
   width: 100%;
   max-width: 700px;
@@ -344,5 +366,11 @@ h3 {
   padding: 10px 15px;
   margin-left: 10px;
   cursor: pointer;
->>>>>>> 5be33a8828cc69ffed399885591bc4d362609b34
+}
+
+textarea {
+    width: 400px;
+    height: 200px;
+    padding: 10px;
+    font-size: 16px;
 }
