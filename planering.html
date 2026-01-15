@@ -4,8 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Planering</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Flex för kalender + todo */
+        .grid-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 20px 50px;
+            gap: 30px;
+        }
+
+        /* Större kalender */
+        #calendar {
+            width: 60%;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .day {
+            border: 1px solid black;
+            padding: 10px;
+            min-height: 100px; /* större dagar */
+            cursor: pointer;
+        }
+
+        .today {
+            background-color: lightgray;
+            font-weight: bold;
+        }
+
+        .event {
+            background-color: #ffeb3b;
+            font-size: 0.8em;
+            margin: 2px 0;
+            padding: 2px 4px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .event.selected {
+            background-color: #f28b82;
+        }
+
+        /* Todo-sektionen */
+        .todo-section {
+            width: 35%;
+        }
+
+        .remove-button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #e44040;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .remove-button:hover {
+            background-color: #c72f2f;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,48 +83,100 @@
         <h1>Planering</h1>
     </header>
 
-    <div id="calendar"></div>
+    <div class="grid-container">
+        <div id="calendar"></div>
+
+        <div class="todo-section">
+            <h2 class="todo-title">Att Göra</h2>
+            <div class="todo-list"></div>
+            <button class="remove-button" id="remove-event">Ta bort markerat event</button>
+        </div>
+    </div>
 
     <script>
         const calendar = document.getElementById("calendar");
+        const removeBtn = document.getElementById("remove-event");
+        let selectedEvent = null;
 
         const today = new Date();
         const year = today.getFullYear();
         const month = today.getMonth();
-
         const monthName = today.toLocaleDateString("sv-SE", { month: "long", year: "numeric" });
-
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-        let html = `<div class="calendar-header">${monthName}</div>`;
-        html += `<div class="calendar-grid">`;
+        const events = {};
 
-        const startDay = (firstDay === 0) ? 6 : firstDay - 1;
-        for (let i = 0; i < startDay; i++) {
-            html += `<div></div>`;
+        function renderCalendar() {
+            let html = `<div class="calendar-header">${monthName}</div>`;
+            html += `<div class="calendar-grid">`;
+
+            const startDay = (firstDay === 0) ? 6 : firstDay - 1;
+            for (let i = 0; i < startDay; i++) {
+                html += `<div></div>`;
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const isToday = day === today.getDate();
+                html += `<div class="day ${isToday ? 'today' : ''}" data-day="${day}">
+                            <div class="day-number">${day}</div>
+                            <div class="events">
+                                ${events[day] ? events[day].map((e, index) => `
+                                    <div class="event" data-day="${day}" data-index="${index}">
+                                        ${e.time} - ${e.text}
+                                    </div>`).join('') : ''}
+                            </div>
+                        </div>`;
+            }
+
+            html += `</div>`;
+            calendar.innerHTML = html;
+
+            // Klicka på dag för att lägga till nytt event
+            document.querySelectorAll(".day").forEach(dayEl => {
+                dayEl.addEventListener("click", (e) => {
+                    if (e.target.classList.contains("event")) return;
+                    const day = dayEl.getAttribute("data-day");
+                    const time = prompt("Ange tid (HH:MM):");
+                    if (!time) return;
+                    const text = prompt("Ange evenemang:");
+                    if (!text) return;
+                    if (!events[day]) events[day] = [];
+                    events[day].push({ time, text });
+                    renderCalendar();
+                });
+            });
+
+            // Klicka på event för att markera
+            document.querySelectorAll(".event").forEach(ev => {
+                ev.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    // Avmarkera tidigare markerad
+                    if (selectedEvent) selectedEvent.classList.remove("selected");
+                    ev.classList.add("selected");
+                    selectedEvent = ev;
+                });
+            });
         }
 
-        for (let day = 1; day <= daysInMonth; day++) {
-            const isToday = day === today.getDate();
-            html += `<div class="day ${isToday ? 'today' : ''}">${day}</div>`;
-        }
+        // Ta bort markerat event
+        removeBtn.addEventListener("click", () => {
+            if (!selectedEvent) {
+                alert("Välj ett event att ta bort först!");
+                return;
+            }
+            const day = selectedEvent.getAttribute("data-day");
+            const index = selectedEvent.getAttribute("data-index");
+            if (confirm("Är du säker på att du vill ta bort detta event?")) {
+                events[day].splice(index, 1);
+                if (events[day].length === 0) delete events[day];
+                selectedEvent = null;
+                renderCalendar();
+            }
+        });
 
-        html += `</div>`;
-        calendar.innerHTML = html;
+        renderCalendar();
     </script>
-
-    <div class="todo-section">
-        <h2 class="todo-title">Att Göra</h2>
-        <div class="todo-list">
-            <div class="todo-item">Extra</div>
-            <div class="todo-item2">Att Göra</div>
-            <div class="todo-item3">Fortsätt</div>
-            <div class="todo-item4">Färdiga Uppgifter</div>
-        </div>
-    </div>
-
-    
 </body>
 
 </html>
